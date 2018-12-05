@@ -1,1 +1,5 @@
 hello world
+<<<<<<< HEAD
+=======
+Hello Android, IOS
+>>>>>>> parent of 010bc94... Revert "ref #123"
