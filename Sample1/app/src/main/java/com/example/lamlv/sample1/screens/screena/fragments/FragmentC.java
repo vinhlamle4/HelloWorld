@@ -52,8 +52,14 @@ public class FragmentC extends Fragment {
         Log.d("Fragment CCC", "On Create View");
         View view = inflater.inflate(R.layout.fragment_c, container, false);
         btnAddFrag4 = view.findViewById(R.id.btn_add_frag_4);
-
+        Button btn_replace_fragment = view.findViewById(R.id.btn_replace_fragment);
         final FragmentManager fragmentManager = getFragmentManager();
+        btn_replace_fragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utils.replaceFragment(R.id.layout_fragment, FragmentD.getInstance(), fragmentManager,true);
+            }
+        });
 
 //        view.setOnKeyListener(new View.OnKeyListener() {
 //            @Override
@@ -75,9 +81,6 @@ public class FragmentC extends Fragment {
         btnAddFrag4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
                 if (FragmentD.getInstance().isAdded() == false) {
                     Utils.addFragment(R.id.layout_fragment, FragmentD.getInstance(),"Fragment1", fragmentManager, true);
                    // Utils.addToBackStack(FragmentD.getInstance().getClass().getSimpleName(), fragmentManager);

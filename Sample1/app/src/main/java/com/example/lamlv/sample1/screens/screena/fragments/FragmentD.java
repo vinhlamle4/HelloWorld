@@ -17,8 +17,11 @@ import com.example.lamlv.sample1.R;
 import com.example.lamlv.sample1.screens.screena.activities.MainActivity;
 import com.example.lamlv.sample1.utils.Utils;
 
+import java.util.List;
+
 public class FragmentD extends Fragment {
     private static FragmentD fragmentD;
+    private static String TAG = "FragmentD";
 
     public FragmentD() {
     }
@@ -53,12 +56,19 @@ public class FragmentD extends Fragment {
 
         final FragmentManager fragmentManager = getFragmentManager();
 
-
-
         btnDetachFrag4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utils.removeFragment(FragmentD.getInstance(), fragmentManager);
+                int numberFragment = fragmentManager.getBackStackEntryCount();
+                for (int i = 0; i < numberFragment; i++) {
+                    FragmentManager.BackStackEntry backEntry = fragmentManager.getBackStackEntryAt(i);
+                    String tag = backEntry.getName();
+                    Fragment fragment = fragmentManager.findFragmentByTag(tag);
+                    Log.d(TAG, "onClick: " + fragment);
+                }
+                fragmentManager.popBackStack(null, 0);
+
+//                Utils.removeFragment(FragmentD.getInstance(), fragmentManager);
             }
         });
         return view;
