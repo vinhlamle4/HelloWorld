@@ -37,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
     // button click listener
     public void onClickBtnReplaceFragment(View view) {
+
+        Main2Activity.newInstance(this, new Main2Activity.ISendMessage() {
+            @Override
+            public void sendMessage(String message) {
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+            }
+        });
+
         if(FragmentA.getInstance().isAdded() == false)
         {
             Utils.replaceFragment(R.id.layout_fragment,FragmentA.getInstance(),fragmentManager,true);
