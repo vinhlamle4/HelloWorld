@@ -15,7 +15,7 @@ public class Main2Activity extends AppCompatActivity {
     private static ISendMessage iSendMessage;
 
     private TextView tvMessage;
-    private Button btnGetMessage;
+    private Button btnSendMessage;
     private Message message;
 
     public static void newInstance(AppCompatActivity activity, ISendMessage iSendMessage) {
@@ -37,19 +37,19 @@ public class Main2Activity extends AppCompatActivity {
 
         //Anh xa
         tvMessage = findViewById(R.id.tv_message);
-        btnGetMessage = findViewById(R.id.btn_get_message);
+        btnSendMessage = findViewById(R.id.btn_get_message);
 
         //khoi tao class MessageModel
         message = Message.getInstance();
         message.setStrtext("TEST");
 
         //button click
-        btnGetMessage.setOnClickListener(new View.OnClickListener() {
+        btnSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (message.getStrtext() != null) {
-                    if (iSendMessage != null) {
-                        iSendMessage.sendMessage(message.getStrtext());
+                    if(iSendMessage != null) {
+                        iSendMessage.sendMessage("Hello ");
                     }
                 }
             }
