@@ -184,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //endregion
 
+    //region load image in API to image view
     public void loadWeatherImage()
     {
         String code = channelModel.getItemModel().getConditionModel().getCode();
@@ -195,11 +196,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    //endregion
 
+    //region button click event
     public void onClickBtnGetData(View view) {
         progressDialog.show();
         loadWeatherDataByCityNameVolley();
     }
+    //endregion
 
     //region set data to view
     public void uploadDataToView() {
@@ -213,11 +217,11 @@ public class MainActivity extends AppCompatActivity {
 //        Picasso.with(getApplicationContext()).load(imgUrl).into(img_weather_image);
 
 
-        tv_location.setText(channelModel.getLocationModel().getCity() + ", " + channelModel.getLocationModel().getCountry());
-        tv_humidity.setText(channelModel.getAtmosphereModel().getHumidity() + percent);
-        tv_temperature.setText(channelModel.getItemModel().getConditionModel().getTemp() + degreeC);
+        tv_location.setText(String.format("%s, %s", channelModel.getLocationModel().getCity(), channelModel.getLocationModel().getCountry()));
+        tv_humidity.setText(String.format("%s%s", channelModel.getAtmosphereModel().getHumidity(), percent));
+        tv_temperature.setText(String.format("%s%s", channelModel.getItemModel().getConditionModel().getTemp(), degreeC));
         tv_text.setText(channelModel.getItemModel().getConditionModel().getText());
-        tv_wind.setText(channelModel.getWindModel().getSpeed() + " " + speedUnit);
+        tv_wind.setText(String.format("%s %s", channelModel.getWindModel().getSpeed(), speedUnit));
     }
     //endregion
 }

@@ -5,7 +5,6 @@ import android.content.Context;
 
 public class WeatherApplication extends Application {
 
-    private WeatherApplication weatherApplication;
     private static Context context;
 
     @Override
